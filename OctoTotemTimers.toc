@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: Octo Totem Timers
+## Notes: Shows active Shaman totems and their remaining duration in a compact Blizzard-style display.
+## Author: Local
+## Version: 1.3.7
+## SavedVariables: OctoTotemTimersDB
+
+OctoTotemTimers.lua
