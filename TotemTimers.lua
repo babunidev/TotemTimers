@@ -1,6 +1,6 @@
--- Octo Totem Timers - OctoWoW / Vanilla 1.12
+-- Totem Timers - World of Warcraft 1.12
 
-local ADDON_PREFIX = "|cff33ff99Octo Totems:|r "
+local ADDON_PREFIX = "|cff33ff99Totem Timers:|r "
 local ICON_SIZE = 34
 local SIDE_ICON_SIZE = 26
 local ICON_GAP = 5
@@ -89,7 +89,7 @@ end
 local function ReadDurationFromTooltip()
     local index = 2
     while index <= 12 do
-        local line = getglobal("OctoTotemScanTooltipTextLeft" .. index)
+        local line = getglobal("TotemTimerScanTooltipTextLeft" .. index)
         local text = line and line:GetText()
         if text then
             local _, _, amount = string.find(text, "[Ll]asts?%s+(%d+)%s+[Ss]ec")
@@ -109,8 +109,8 @@ end
 local function ReadChargesFromTooltip()
     local index = 2
     while index <= 12 do
-        local left = getglobal("OctoTotemScanTooltipTextLeft" .. index)
-        local right = getglobal("OctoTotemScanTooltipTextRight" .. index)
+        local left = getglobal("TotemTimerScanTooltipTextLeft" .. index)
+        local right = getglobal("TotemTimerScanTooltipTextRight" .. index)
         local text = (left and left:GetText()) or ""
         local rightText = (right and right:GetText()) or ""
         local _, _, amount = string.find(text, "(%d+)%s+[Cc]harges?")
@@ -152,7 +152,7 @@ local function FindActiveShield()
         if not texture then break end
         scanTip:ClearLines()
         scanTip:SetUnitBuff("player", index)
-        local tooltipTitle = OctoTotemScanTooltipTextLeft1 and OctoTotemScanTooltipTextLeft1:GetText()
+        local tooltipTitle = TotemTimerScanTooltipTextLeft1 and TotemTimerScanTooltipTextLeft1:GetText()
         local title = ShieldNameFromTexture(texture) or CleanSpellName(tooltipTitle)
         if shieldMaxCharges[title] then
             local charges = tonumber(applications)
@@ -185,7 +185,7 @@ local function FindWeaponEnchant()
     scanTip:SetInventoryItem("player", inventorySlot)
     local lineIndex = 2
     while lineIndex <= 12 do
-        local line = getglobal("OctoTotemScanTooltipTextLeft" .. lineIndex)
+        local line = getglobal("TotemTimerScanTooltipTextLeft" .. lineIndex)
         local text = line and line:GetText()
         if text then
             local enchantIndex
@@ -226,7 +226,7 @@ local function ScanSpell(spellIndex, bookType)
     if not scanTip or not spellIndex then return end
     scanTip:ClearLines()
     scanTip:SetSpell(spellIndex, bookType or BOOKTYPE_SPELL)
-    local title = OctoTotemScanTooltipTextLeft1 and OctoTotemScanTooltipTextLeft1:GetText()
+    local title = TotemTimerScanTooltipTextLeft1 and TotemTimerScanTooltipTextLeft1:GetText()
     QueueTotem(title, ReadDurationFromTooltip(), GetSpellTexture(spellIndex, bookType or BOOKTYPE_SPELL))
 end
 
@@ -234,7 +234,7 @@ local function ScanAction(actionSlot)
     if not scanTip or not actionSlot then return end
     scanTip:ClearLines()
     scanTip:SetAction(actionSlot)
-    local title = OctoTotemScanTooltipTextLeft1 and OctoTotemScanTooltipTextLeft1:GetText()
+    local title = TotemTimerScanTooltipTextLeft1 and TotemTimerScanTooltipTextLeft1:GetText()
     QueueTotem(title, ReadDurationFromTooltip(), GetActionTexture(actionSlot))
 end
 
@@ -268,7 +268,7 @@ local function EnsureCastingHooks()
 end
 
 local function CreateDisplay()
-    display = CreateFrame("Frame", "OctoTotemTimersFrame", UIParent)
+    display = CreateFrame("Frame", "TotemTimersFrame", UIParent)
     display:SetWidth(4 * ICON_SIZE + 3 * ICON_GAP + 16)
     display:SetHeight(ICON_SIZE + 40)
     display:SetPoint("CENTER", UIParent, "CENTER", 0, -150)
@@ -284,22 +284,22 @@ local function CreateDisplay()
     display:EnableMouse(true)
     display:RegisterForDrag("LeftButton")
     display:SetScript("OnDragStart", function()
-        if not OctoTotemTimersDB.locked then this:StartMoving() end
+        if not TotemTimersDB.locked then this:StartMoving() end
     end)
     display:SetScript("OnDragStop", function()
         this:StopMovingOrSizing()
         local point, _, relativePoint, x, y = this:GetPoint()
-        OctoTotemTimersDB.point = point
-        OctoTotemTimersDB.relativePoint = relativePoint
-        OctoTotemTimersDB.x = x
-        OctoTotemTimersDB.y = y
+        TotemTimersDB.point = point
+        TotemTimersDB.relativePoint = relativePoint
+        TotemTimersDB.x = x
+        TotemTimersDB.y = y
     end)
 
     display.icons = {}
     local position
     for position = 1, 4 do
         local slot = DISPLAY_ORDER[position]
-        local button = CreateFrame("Button", "OctoTotemTimer" .. slot, display)
+        local button = CreateFrame("Button", "TotemTimerTimer" .. slot, display)
         button:SetWidth(ICON_SIZE)
         button:SetHeight(ICON_SIZE)
         button:SetPoint("TOPLEFT", display, "TOPLEFT", 8 + (position - 1) * (ICON_SIZE + ICON_GAP), -22)
@@ -341,7 +341,7 @@ local function CreateDisplay()
         display.icons[slot] = button
     end
 
-    local shield = CreateFrame("Button", "OctoTotemShield", display)
+    local shield = CreateFrame("Button", "TotemTimerShield", display)
     shield:SetWidth(SIDE_ICON_SIZE)
     shield:SetHeight(SIDE_ICON_SIZE)
     shield:SetPoint("BOTTOM", display, "TOPLEFT", 8 + ICON_SIZE / 2, 7)
@@ -378,7 +378,7 @@ local function CreateDisplay()
     shield:Hide()
     display.shield = shield
 
-    local weapon = CreateFrame("Button", "OctoTotemWeaponEnchant", display)
+    local weapon = CreateFrame("Button", "TotemTimerWeaponEnchant", display)
     weapon:SetWidth(SIDE_ICON_SIZE)
     weapon:SetHeight(SIDE_ICON_SIZE)
     weapon:SetPoint("BOTTOM", display, "TOPLEFT", 8 + 3 * (ICON_SIZE + ICON_GAP) + ICON_SIZE / 2, 7)
@@ -404,8 +404,8 @@ local function CreateDisplay()
     display.weapon = weapon
 
     display:ClearAllPoints()
-    display:SetPoint(OctoTotemTimersDB.point or "CENTER", UIParent,
-        OctoTotemTimersDB.relativePoint or "CENTER", OctoTotemTimersDB.x or 0, OctoTotemTimersDB.y or -150)
+    display:SetPoint(TotemTimersDB.point or "CENTER", UIParent,
+        TotemTimersDB.relativePoint or "CENTER", TotemTimersDB.x or 0, TotemTimersDB.y or -150)
 end
 
 local function UpdateShield()
@@ -471,7 +471,7 @@ end
 
 local function UpdateDisplay()
     if not display then return end
-    if OctoTotemTimersDB.hidden then
+    if TotemTimersDB.hidden then
         display:Hide()
         return
     end
@@ -495,7 +495,7 @@ local function UpdateDisplay()
             button:Show()
         else
             slots[i] = nil
-            if OctoTotemTimersDB.alwaysShow then
+            if TotemTimersDB.alwaysShow then
                 button:SetAlpha(1)
                 button.icon:SetTexture(EMPTY_TOTEM_TEXTURES[i])
                 button.icon:SetVertexColor(
@@ -513,7 +513,7 @@ local function UpdateDisplay()
             end
         end
     end
-    if active > 0 or shieldActive or weaponEnchantActive or OctoTotemTimersDB.alwaysShow then display:Show() else display:Hide() end
+    if active > 0 or shieldActive or weaponEnchantActive or TotemTimersDB.alwaysShow then display:Show() else display:Hide() end
 end
 
 local function InitializeAddon()
@@ -525,15 +525,15 @@ local function InitializeAddon()
         return false
     end
 
-    OctoTotemTimersDB = OctoTotemTimersDB or {}
-    if OctoTotemTimersDB.alwaysShow == nil then OctoTotemTimersDB.alwaysShow = true end
-    scanTip = CreateFrame("GameTooltip", "OctoTotemScanTooltip", UIParent, "GameTooltipTemplate")
+    TotemTimersDB = TotemTimersDB or {}
+    if TotemTimersDB.alwaysShow == nil then TotemTimersDB.alwaysShow = true end
+    scanTip = CreateFrame("GameTooltip", "TotemTimerScanTooltip", UIParent, "GameTooltipTemplate")
     scanTip:SetOwner(UIParent, "ANCHOR_NONE")
     RefreshShieldTextures()
     CreateDisplay()
     EnsureCastingHooks()
     initialized = true
-    Chat("loaded. Empty elemental slots are shown; use /octototems for commands.")
+    Chat("loaded. Empty elemental slots are shown; use /totemtimers for commands.")
     return true
 end
 
@@ -551,7 +551,7 @@ events:RegisterEvent("UNIT_INVENTORY_CHANGED")
 events:RegisterEvent("SPELLS_CHANGED")
 events:SetScript("OnEvent", function()
     if event == "VARIABLES_LOADED" then
-        OctoTotemTimersDB = OctoTotemTimersDB or {}
+        TotemTimersDB = TotemTimersDB or {}
     elseif event == "PLAYER_ENTERING_WORLD" then
         InitializeAddon()
     elseif event == "SPELLS_CHANGED" then
@@ -569,31 +569,31 @@ events:SetScript("OnUpdate", function()
     end
 end)
 
-SLASH_OCTOTOTEMS1 = "/octototems"
-SLASH_OCTOTOTEMS2 = "/ototems"
-SlashCmdList["OCTOTOTEMS"] = function(message)
+SLASH_TOTEMTIMERS1 = "/totemtimers"
+SLASH_TOTEMTIMERS2 = "/ttimers"
+SlashCmdList["TOTEMTIMERS"] = function(message)
     message = string.lower(message or "")
     if message == "lock" then
-        OctoTotemTimersDB.locked = true
+        TotemTimersDB.locked = true
         Chat("display locked.")
     elseif message == "unlock" then
-        OctoTotemTimersDB.locked = false
+        TotemTimersDB.locked = false
         Chat("display unlocked; drag it with the left mouse button.")
     elseif message == "show" then
-        OctoTotemTimersDB.hidden = false
-        OctoTotemTimersDB.alwaysShow = true
+        TotemTimersDB.hidden = false
+        TotemTimersDB.alwaysShow = true
         UpdateDisplay()
         Chat("display shown.")
     elseif message == "hide" then
-        OctoTotemTimersDB.hidden = true
+        TotemTimersDB.hidden = true
         UpdateDisplay()
-        Chat("display hidden completely; use /octototems show to restore it.")
+        Chat("display hidden completely; use /totemtimers show to restore it.")
     elseif message == "reset" then
-        OctoTotemTimersDB.point, OctoTotemTimersDB.relativePoint = "CENTER", "CENTER"
-        OctoTotemTimersDB.x, OctoTotemTimersDB.y = 0, -150
+        TotemTimersDB.point, TotemTimersDB.relativePoint = "CENTER", "CENTER"
+        TotemTimersDB.x, TotemTimersDB.y = 0, -150
         if display then display:ClearAllPoints(); display:SetPoint("CENTER", UIParent, "CENTER", 0, -150) end
         Chat("position reset.")
     else
-        Chat("/octototems lock | unlock | show | hide | reset")
+        Chat("/totemtimers lock | unlock | show | hide | reset")
     end
 end
