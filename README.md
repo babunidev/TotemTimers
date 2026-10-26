@@ -1,5 +1,7 @@
 # Totem Timers
 
+**Author:** Babuni.dev
+
 A compact, Blizzard-style Shaman totem display for **World of Warcraft 1.12**.
 
 ## Features
