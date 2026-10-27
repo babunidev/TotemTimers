@@ -9,7 +9,7 @@ TotemTimers.toc (Interface 11200 / Version 1.3.7)
     SavedVariables: TotemTimersDB
     TotemTimers.lua
       ├── static spell/element duration and texture tables
-      ├── cast/action hooks and native-to-tem state option
+      ├── cast/action hooks and native totem state option
       ├── UnitBuff shield and inventory-tooltip enchant lookups
       ├── 4-element visual row + shield/weapon icons
       └── events and repeating ~0.10s refresh
