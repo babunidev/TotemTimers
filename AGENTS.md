@@ -1,10 +1,10 @@
 # Totem Timers — instructions for AI and human collaborators
 
-**Creator / creative director:** Babuni.dev. **Current addon:** TotemTimers v1.3.7 for WoW 1.12.
+**Human creative and director:** Babuni. **Current addon:** TotemTimers v1.3.7 for WoW 1.12.
 
 ## Respect the product
 
-The authored identity is a **compact Blizzard-style Shaman status panel** for four totem elements, shield charges and weapon enchants. It is not an autocaster, combat rotation helper, buff assignment planner or modern-game UI replacement. Preserve the Earth/Water/Fire/Air visible order and the creator's modest movable, lockable frame unless the creator approves a redesign.
+The authored identity is a **compact Blizzard-style Shaman status panel** for four totem elements, shield charges and weapon enchants. It is not an autocaster, combat rotation helper, buff assignment planner or modern-game UI replacement. Preserve the Earth/Water/Fire/Air visible order and the creative's modest movable, lockable frame unless the creative approves a redesign.
 
 Read README, CONCEPT, ROADMAP, docs/ARCHITECTURE, docs/DESIGN, docs/CONTENT, docs/DECISIONS, docs/DEVLOG and **TotemTimers.lua** before code changes. Follow Vanilla 1.12/Lua 5.0 API constraints, not modern client assumptions.
 
@@ -24,7 +24,7 @@ Read README, CONCEPT, ROADMAP, docs/ARCHITECTURE, docs/DESIGN, docs/CONTENT, doc
 
 ## How to work and document
 
-1. Record what Babuni.dev requested and why, including source evidence.
+1. Record what Babuni requested and why, including source evidence.
 2. Distinguish suggested changes, explicit creator decisions, implementation, tests and remaining uncertainty.
 3. Make narrowly scoped edits. Preserve the core UX and source/dependency boundaries.
 4. Execute actual target-client tests for totem placement/failure/replacement/recall, shield charge/weapon cases, and hooks. Synthetic Lua harnesses are not a substitute.
@@ -33,3 +33,7 @@ Read README, CONCEPT, ROADMAP, docs/ARCHITECTURE, docs/DESIGN, docs/CONTENT, doc
 7. Preserve human creative authorship; AI gets credit only for documented proposals, implementations, analyses and writing. Don't publish private chats, passwords or private game account data.
 
 The October 27, 2026 task is **documentation-only**; no code repair was requested or performed.
+
+## Repository-local documentation standard
+
+Before writing or changing project documentation, read [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md). These rules travel with this repository and do not depend on the babuni.dev ChatGPT Project. Preserve all project-specific technical, creative, canon, safety, licensing, and historical rules in this file; follow the linked standard for public first-person narrative, human–AI attribution, concise development journals, decision records, and evidence-based verification. **Babuni** is the human creative; **babuni.dev** is the website/portfolio, not the person. Preserve third-party credits and historical legal notices. References above to a dated “documentation-only audit” describe that past task, not a permanent ban on later authorized implementation.
