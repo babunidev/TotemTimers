@@ -25,7 +25,7 @@ Read README, CONCEPT, ROADMAP, docs/ARCHITECTURE, docs/DESIGN, docs/CONTENT, doc
 ## How to work and document
 
 1. Record what Babuni requested and why, including source evidence.
-2. Distinguish suggested changes, explicit creator decisions, implementation, tests and remaining uncertainty.
+2. Distinguish suggested changes, explicit creative decisions, implementation, tests and remaining uncertainty.
 3. Make narrowly scoped edits. Preserve the core UX and source/dependency boundaries.
 4. Execute actual target-client tests for totem placement/failure/replacement/recall, shield charge/weapon cases, and hooks. Synthetic Lua harnesses are not a substitute.
 5. When migrating saved files, run PowerShell fixtures first and work only on backed-up data while WoW is closed.
