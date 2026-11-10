@@ -1,6 +1,6 @@
-# Totem Timers — creative and technical development journal
+# Totem Timers — development journal
 
-**Creator and creative director:** Babuni.dev  
+**Creative:** Babuni  
 **Retrospective prepared:** October 27, 2026, from the current Git tree, TOC, full 600-line Lua implementation, September commit diffs, published release metadata and README. The original human/AI planning dialogues were not recovered; this journal does **not** invent them.
 
 ## The Shaman's four-part attention problem
