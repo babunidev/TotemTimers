@@ -100,6 +100,8 @@ If using Linux, manually copy a **backup** of `WTF/Account/.../SavedVariables/Oc
 
 Totem Timers originally appeared as **Octo Totem Timers** on September 10, 2026, already at version **1.3.7**. The September 18 rename standardized names and introduced migration tooling, followed by Babuni.dev attribution and a small documentation scaffold on October 26. The current audit expands that into a publishable, source-grounded project record.
 
-[Concept](CONCEPT.md) · [Roadmap](ROADMAP.md) · [Changelog](CHANGELOG.md) · [Architecture](docs/ARCHITECTURE.md) · [Design](docs/DESIGN.md) · [Content](docs/CONTENT.md) · [Decisions](docs/DECISIONS.md) · [Development journal](docs/DEVLOG.md) · [AI collaboration](docs/AI_COLLABORATION.md) · [Development rules](AGENTS.md)
+- **Project** — [Concept](CONCEPT.md), [Roadmap](ROADMAP.md), [Changelog](CHANGELOG.md)
+- **History** — [Decisions](docs/DECISIONS.md), [Development journal](docs/DEVLOG.md), [AI collaboration](docs/AI_COLLABORATION.md)
+- **Reference** — [Architecture](docs/ARCHITECTURE.md), [Design](docs/DESIGN.md), [Content](docs/CONTENT.md), [Development rules](AGENTS.md)
 
 **Creative vision and final decisions:** Babuni.dev. **AI contribution in this audit:** code/history interpretation and documentation only; no creative idea or prior code was retroactively attributed to the assistant.
