@@ -64,3 +64,7 @@ October 26 commits standardized the author field from **Local** to **Babuni.dev*
 The most useful next evidence would be real tests from the intended game client: cast a Fire totem with low mana, switch element positions, remove a totem early, recall all, watch shield charges and try main-hand/off-hand imbues. The tests should distinguish what the addon **predicts** from what the character visibly owns and what the game API confirms.
 
 The deeper portfolio story is about **making uncertainty usable**. The creator chose a tiny visual surface for a complicated four-element class, and the software's development shows how old game data limits can shape both what the interface promises and what its documentation must be careful not to promise.
+
+## 2026-11-13 — Giving the repository clear permissions
+
+Public source alone did not explain what others could reuse, so I approved MIT for original addon code. AI assistance added the license and brought the project notes into agreement, without changing how the application runs. Other people's content retains its own terms.
