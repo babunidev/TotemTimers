@@ -20,7 +20,7 @@ Read README, CONCEPT, ROADMAP, docs/ARCHITECTURE, docs/DESIGN, docs/CONTENT, doc
 - Non-Shaman init unregisters events without creating display; slash handlers still exist and should be tested/guarded if behavior is expanded.
 - Tooltip duration/charge/enchant detection has English text dependencies; locale/provider support is **unverified**.
 - Old `OctoTotemTimersDB` data requires rename migration; safeguard files before any migration.
-- There is **no LICENSE file** in the inspected tree. Do not invent one or assume third-party assets may be redistributed.
+- Original software is MIT-licensed under `LICENSE` (13 November 2026). Do not assume third-party assets may be redistributed.
 
 ## How to work and document
 
