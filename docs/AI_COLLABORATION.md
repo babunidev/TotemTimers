@@ -1,5 +1,7 @@
 # Totem Timers — human/AI collaboration and provenance
 
+Follow [the documentation standard](DOCUMENTATION.md) for first-person author voice throughout project documentation, factual changelogs, and naming the AI tool and verified model for each contribution.
+
 **Original creator / creative decision-maker:** Babuni.dev.
 
 ## Authorship and historical limits
