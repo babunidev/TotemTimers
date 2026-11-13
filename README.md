@@ -93,7 +93,7 @@ If using Linux, manually copy a **backup** of `WTF/Account/.../SavedVariables/Oc
 - Global wrappers can interact with other addons wrapping the same functions. Rapid 0.1s rewrapping deserves compatibility/performance tests.
 - The shield scan only inspects the first **32** player buffs; charge data can be missing or interpreted differently on custom clients.
 - The weapon effect display prioritizes the main-hand enchant and only scans known names; unusual enchants use a generic label.
-- There is **no LICENSE** in this repository; public source does not automatically grant reuse rights.
+- Original software is licensed under [MIT](LICENSE) as of 13 November 2026. Third-party game content retains its own terms.
 - The release notes report historical syntax/migration checks, but the release ZIP and checksum were **not** independently downloaded/verified in this documentation session, and **no game tests were run**.
 
 ## Development and attribution
