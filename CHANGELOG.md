@@ -30,3 +30,8 @@ The [GitHub release v1.3.7](https://github.com/babunidev/TotemTimers/releases/ta
 - `997ccee7`: linked those documents from README.
 
 The current audit grows that preliminary record without modifying gameplay.
+
+## 2026-11-13 — License and rights
+
+- Established MIT for original addon software and updated repository documentation to explain the permission boundary.
+- Preserved third-party authorship and external assets' separate terms. No gameplay or runtime verification is claimed.
